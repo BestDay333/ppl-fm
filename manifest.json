@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "PPL FM Tab for PepeLand",
+  "version": "1.2",
+  "description": "Добавляет вкладку PPL FM с автообновлением через GitHub и Cloudflare Pages",
+  "host_permissions": [
+    "https://*.pepeland.net/*",
+    "https://*.pages.dev/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.pepeland.net/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

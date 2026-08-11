@@ -1,0 +1,47 @@
+<div class="flex-1 flex items-center justify-center p-6 w-full min-h-[70vh] bg-transparent">
+    <div class="max-w-md w-full rounded-2xl bg-white dark:bg-zinc-900 shadow-xl ring-1 ring-black/10 dark:ring-white/10 p-8 text-center relative overflow-hidden transition-colors">
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Эквалайзер -->
+        <div id="equalizer" class="flex justify-center items-end gap-1.5 h-12 mb-6 opacity-40 transition-opacity duration-300">
+            <div class="w-1.5 bg-teal-500 dark:bg-teal-400 rounded-full h-3"></div>
+            <div class="w-1.5 bg-teal-500 dark:bg-teal-400 rounded-full h-3"></div>
+            <div class="w-1.5 bg-teal-500 dark:bg-teal-400 rounded-full h-3"></div>
+            <div class="w-1.5 bg-teal-500 dark:bg-teal-400 rounded-full h-3"></div>
+            <div class="w-1.5 bg-teal-500 dark:bg-teal-400 rounded-full h-3"></div>
+        </div>
+
+        <h1 class="font-manrope text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white mb-2">PPL FM</h1>
+        <p id="status-text" class="text-sm text-zinc-500 dark:text-zinc-400 mb-8">Прямой эфир радиостанции PepeLand</p>
+        
+        <!-- Кнопка воспроизведения -->
+        <button id="playBtn" class="group relative inline-flex items-center justify-center font-medium transition rounded-full w-16 h-16 bg-teal-500 hover:bg-teal-400 text-zinc-950 shadow-lg shadow-teal-500/20 mx-auto cursor-pointer active:scale-95">
+            <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7 ml-1">
+                <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+            </svg>
+            <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7 hidden">
+                <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clip-rule="evenodd" />
+            </svg>
+        </button>
+
+        <audio id="audioStream" preload="none">
+            <source src="https://your-radio-stream-url.com/stream" type="audio/mpeg">
+            Ваш браузер не поддерживает аудиоплеер.
+        </audio>
+    </div>
+</div>
+<style>
+    @keyframes pulse {
+        0% { height: 8px; }
+        100% { height: 40px; }
+    }
+    #equalizer.opacity-40 div {
+        animation: none !important;
+        height: 12px;
+    }
+    #equalizer div:nth-child(1) { animation-delay: 0.1s; }
+    #equalizer div:nth-child(2) { animation-delay: 0.3s; }
+    #equalizer div:nth-child(3) { animation-delay: 0.2s; }
+    #equalizer div:nth-child(4) { animation-delay: 0.4s; }
+    #equalizer div:nth-child(5) { animation-delay: 0.15s; }
+</style>
