@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Выпуск #1: Итоги 10 сезона PepeLand",
+    "description": "Большой подкаст с администрацией и игроками о главных событиях прошедшего сезона.",
+    "audioUrl": "https://your-radio-stream-url.com/podcast1.mp3",
+    "date": "2026-08-11"
+  },
+  {
+    "id": 2,
+    "title": "Анонс Красной фазы PepeLand 11",
+    "description": "Чего ожидать от нового сезона и какие изменения появятся в игровом ядре.",
+    "audioUrl": "https://your-radio-stream-url.com/podcast2.mp3",
+    "date": "2026-07-26"
+  }
+]
