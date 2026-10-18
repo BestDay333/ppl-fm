@@ -1,48 +1,59 @@
-<div style="width: 100%; display: flex; flex-direction: column; flex: 1; background-color: #09090b; color: #d4d4d8; font-family: 'Manrope', sans-serif; box-sizing: border-box; min-height: 80vh;">
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 48px 24px 32px 24px; box-sizing: border-box; display: flex; flex-direction: column;">
-        
+<div style="width:100%;display:flex;flex-direction:column;flex:1;background-color:#09090b;color:#d4d4d8;font-family:'Manrope',sans-serif;box-sizing:border-box;min-height:80vh;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:48px 24px 32px;box-sizing:border-box;display:flex;flex-direction:column;">
+
         <!-- Навигация -->
-        <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 32px; background-color: rgba(24, 24, 27, 0.8); padding: 6px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); width: fit-content;">
-            <button id="nav-player" class="ppl-tab-btn" data-tab="player" style="padding: 8px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; background-color: #14b8a6; color: #09090b; border: none; cursor: pointer; transition: all 0.2s;">Прямой эфир</button>
-            <button id="nav-news" class="ppl-tab-btn" data-tab="news" style="padding: 8px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; background-color: transparent; color: #a1a1aa; border: none; cursor: pointer; transition: all 0.2s;">Лента новостей</button>
-            <button id="nav-library" class="ppl-tab-btn" data-tab="library" style="padding: 8px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; background-color: transparent; color: #a1a1aa; border: none; cursor: pointer; transition: all 0.2s;">Библиотека</button>
-            <button id="nav-profile" class="ppl-tab-btn" data-tab="profile" style="padding: 8px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; background-color: transparent; color: #a1a1aa; border: none; cursor: pointer; transition: all 0.2s;">Профиль</button>
+        <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:32px;background:rgba(24,24,27,0.8);padding:6px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);width:fit-content;flex-wrap:wrap;">
+            <button id="nav-player" class="ppl-tab-btn" data-tab="player"   style="padding:8px 16px;border-radius:12px;font-size:14px;font-weight:500;background:#14b8a6;color:#09090b;border:none;cursor:pointer;transition:all 0.2s;">Прямой эфир</button>
+            <button id="nav-news"   class="ppl-tab-btn" data-tab="news"     style="padding:8px 16px;border-radius:12px;font-size:14px;font-weight:500;background:transparent;color:#a1a1aa;border:none;cursor:pointer;transition:all 0.2s;">Лента новостей</button>
+            <button id="nav-library"class="ppl-tab-btn" data-tab="library"  style="padding:8px 16px;border-radius:12px;font-size:14px;font-weight:500;background:transparent;color:#a1a1aa;border:none;cursor:pointer;transition:all 0.2s;">Библиотека</button>
+            <button id="nav-profile"class="ppl-tab-btn" data-tab="profile"  style="padding:8px 16px;border-radius:12px;font-size:14px;font-weight:500;background:transparent;color:#a1a1aa;border:none;cursor:pointer;transition:all 0.2s;">Профиль</button>
+            <button id="nav-admin"  class="ppl-tab-btn" data-tab="admin"    style="padding:8px 16px;border-radius:12px;font-size:14px;font-weight:500;background:transparent;color:#71717a;border:none;cursor:pointer;transition:all 0.2s;">⚙ Админ</button>
         </div>
 
-        <!-- Вкладка: Прямой эфир -->
-        <div id="tab-player" class="ppl-tab-content" style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; width: 100%;">
-            <div style="background-color: rgba(24, 24, 27, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; box-sizing: border-box;">
-                <div style="position: absolute; top: -96px; right: -96px; width: 192px; height: 192px; background-color: rgba(20, 184, 166, 0.1); border-radius: 50%; filter: blur(48px); pointer-events: none;"></div>
-                
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; width: 100%;">
-                    <span style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: 9999px; background-color: rgba(239, 68, 68, 0.1); color: #f87171; font-size: 12px; font-weight: 600; border: 1px solid rgba(239, 68, 68, 0.2);">
-                        <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #ef4444; display: inline-block;"></span> LIVE ЭФИР
+        <!-- ══ Вкладка: Прямой эфир ══ -->
+        <div id="tab-player" class="ppl-tab-content" style="display:grid;grid-template-columns:2fr 1fr;gap:24px;width:100%;">
+            <div style="background:rgba(24,24,27,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;box-sizing:border-box;">
+                <div style="position:absolute;top:-96px;right:-96px;width:192px;height:192px;background:rgba(20,184,166,0.1);border-radius:50%;filter:blur(48px);pointer-events:none;"></div>
+
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;width:100%;">
+                    <span id="stream-status-badge" style="display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:9999px;background:rgba(239,68,68,0.1);color:#f87171;font-size:12px;font-weight:600;border:1px solid rgba(239,68,68,0.2);">
+                        <span id="stream-status-dot" style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;"></span> LIVE ЭФИР
                     </span>
-                    <span style="font-size: 12px; color: #71717a; font-family: monospace;">104.7 FM · 128 kbps</span>
+                    <span id="stream-freq" style="font-size:12px;color:#71717a;font-family:monospace;">104.7 FM · 128 kbps</span>
                 </div>
 
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin: 24px 0;">
-                    <div id="equalizer" style="display: flex; justify-content: center; align-items: flex-end; gap: 6px; height: 48px; margin-bottom: 24px; opacity: 0.4; transition: opacity 0.3s;">
-                        <div style="width: 6px; background-color: #2dd4bf; border-radius: 9999px; height: 12px;"></div>
-                        <div style="width: 6px; background-color: #2dd4bf; border-radius: 9999px; height: 12px;"></div>
-                        <div style="width: 6px; background-color: #2dd4bf; border-radius: 9999px; height: 12px;"></div>
-                        <div style="width: 6px; background-color: #2dd4bf; border-radius: 9999px; height: 12px;"></div>
-                        <div style="width: 6px; background-color: #2dd4bf; border-radius: 9999px; height: 12px;"></div>
+                <div style="display:flex;flex-direction:column;align-items:center;text-align:center;margin:24px 0;">
+                    <!-- Эквалайзер -->
+                    <div id="equalizer" style="display:flex;justify-content:center;align-items:flex-end;gap:6px;height:48px;margin-bottom:24px;opacity:0.4;transition:opacity 0.3s;">
+                        <div style="width:6px;background:#2dd4bf;border-radius:9999px;height:12px;"></div>
+                        <div style="width:6px;background:#2dd4bf;border-radius:9999px;height:12px;"></div>
+                        <div style="width:6px;background:#2dd4bf;border-radius:9999px;height:12px;"></div>
+                        <div style="width:6px;background:#2dd4bf;border-radius:9999px;height:12px;"></div>
+                        <div style="width:6px;background:#2dd4bf;border-radius:9999px;height:12px;"></div>
                     </div>
-                    <h1 style="font-size: 28px; font-weight: 800; color: #ffffff; margin: 0 0 8px 0; letter-spacing: -0.025em;">PPL FM · Основная волна</h1>
-                    <p id="status-text" style="font-size: 14px; color: #a1a1aa; margin: 0 0 32px 0;">Прямой эфир радиостанции PepeLand</p>
-                    
-                    <button id="playBtn" style="width: 80px; height: 80px; min-width: 80px; min-height: 80px; border-radius: 50%; background-color: #14b8a6; color: #09090b; border: none; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.3);">
-                        <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px; margin-left: 3px;">
-                            <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+
+                    <h1 style="font-size:28px;font-weight:800;color:#fff;margin:0 0 8px;letter-spacing:-0.025em;">PPL FM · Основная волна</h1>
+                    <p id="status-text" style="font-size:14px;color:#a1a1aa;margin:0 0 28px;">Прямой эфир радиостанции PepeLand</p>
+
+                    <button id="playBtn" style="width:80px;height:80px;min-width:80px;min-height:80px;border-radius:50%;background:#14b8a6;color:#09090b;border:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 25px -5px rgba(20,184,166,0.3);">
+                        <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:32px;height:32px;margin-left:3px;">
+                            <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd"/>
                         </svg>
-                        <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px; display: none;">
-                            <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clip-rule="evenodd" />
+                        <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:32px;height:32px;display:none;">
+                            <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clip-rule="evenodd"/>
                         </svg>
                     </button>
+
+                    <!-- Регулятор громкости -->
+                    <div style="display:flex;align-items:center;gap:12px;margin-top:24px;width:100%;max-width:280px;">
+                        <span style="font-size:16px;">🔈</span>
+                        <input id="volumeSlider" type="range" min="0" max="100" value="80"
+                            style="flex:1;accent-color:#14b8a6;cursor:pointer;" />
+                        <span id="volumeLabel" style="font-size:13px;color:#71717a;font-family:monospace;min-width:36px;">80%</span>
+                    </div>
                 </div>
 
-                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #71717a; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+                <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#71717a;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);">
                     <span>Соединение стабильно</span>
                     <span>Экосистема PepeLand</span>
                 </div>
@@ -52,71 +63,181 @@
                 </audio>
             </div>
 
-            <div style="background-color: rgba(24, 24, 27, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box;">
+            <!-- Инфо-карточка -->
+            <div style="background:rgba(24,24,27,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box;">
                 <div>
-                    <h3 style="font-size: 16px; font-weight: 700; color: #ffffff; margin: 0 0 16px 0;">Информация об эфире</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #a1a1aa;">
-                        <li style="display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 12px;">
+                    <h3 style="font-size:16px;font-weight:700;color:#fff;margin:0 0 16px;">Информация об эфире</h3>
+                    <ul style="list-style:none;padding:0;margin:0;font-size:14px;color:#a1a1aa;">
+                        <li style="display:flex;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:12px;">
                             <span>Битрейт:</span>
-                            <span style="color: #ffffff; font-family: monospace;">128 kbps</span>
+                            <span id="info-bitrate" style="color:#fff;font-family:monospace;">128 kbps</span>
                         </li>
-                        <li style="display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 12px;">
+                        <li style="display:flex;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:12px;">
                             <span>Формат:</span>
-                            <span style="color: #ffffff; font-family: monospace;">Stereo / Live</span>
+                            <span id="info-format" style="color:#fff;font-family:monospace;">Stereo / Live</span>
                         </li>
-                        <li style="display: flex; justify-content: space-between;">
+                        <li style="display:flex;justify-content:space-between;">
                             <span>Статус:</span>
-                            <span style="color: #2dd4bf; font-weight: 500;">Вещание идет</span>
+                            <span id="info-status" style="color:#2dd4bf;font-weight:500;">Вещание идет</span>
                         </li>
                     </ul>
                 </div>
-                <div style="margin-top: 24px; padding: 16px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); font-size: 12px; color: #71717a;">
+                <div style="margin-top:24px;padding:16px;border-radius:12px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.05);font-size:12px;color:#71717a;">
                     Официальный медиацентр радиостанции PPL FM.
                 </div>
             </div>
         </div>
 
-        <!-- Вкладка: Новости -->
-        <div id="tab-news" class="ppl-tab-content" style="display: none; max-width: 800px; width: 100%;">
-            <h2 style="font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 16px;">Лента подкастов и новостей</h2>
-            <div id="news-container" style="display: flex; flex-direction: column; gap: 16px;">
-                <div style="padding: 20px; border-radius: 16px; background-color: rgba(24, 24, 27, 0.7); border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <h3 style="color: #2dd4bf; margin: 0 0 4px 0; font-size: 16px;">Загрузка ленты...</h3>
+        <!-- ══ Вкладка: Новости ══ -->
+        <div id="tab-news" class="ppl-tab-content" style="display:none;max-width:800px;width:100%;">
+            <h2 style="font-size:20px;font-weight:700;color:#fff;margin-bottom:16px;">Лента подкастов и новостей</h2>
+            <div id="news-container" style="display:flex;flex-direction:column;gap:16px;">
+                <div style="padding:20px;border-radius:16px;background:rgba(24,24,27,0.7);border:1px solid rgba(255,255,255,0.1);">
+                    <h3 style="color:#2dd4bf;margin:0 0 4px;font-size:16px;">Загрузка ленты...</h3>
                 </div>
             </div>
         </div>
 
-        <!-- Вкладка: Библиотека -->
-        <div id="tab-library" class="ppl-tab-content" style="display: none; max-width: 800px; width: 100%; padding: 48px 0; text-align: center; background-color: rgba(24, 24, 27, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px;">
-            <h2 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 8px 0;">Ваша библиотека</h2>
-            <p style="font-size: 14px; color: #a1a1aa; margin: 0;">Здесь будут отображаться сохраненные подкасты и избранные треки.</p>
+        <!-- ══ Вкладка: Библиотека ══ -->
+        <div id="tab-library" class="ppl-tab-content" style="display:none;max-width:800px;width:100%;padding:48px 0;text-align:center;background:rgba(24,24,27,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:20px;">
+            <div style="font-size:40px;margin-bottom:12px;">📚</div>
+            <h2 style="font-size:20px;font-weight:700;color:#fff;margin:0 0 8px;">Ваша библиотека</h2>
+            <p style="font-size:14px;color:#a1a1aa;margin:0;">Здесь будут отображаться сохранённые подкасты и избранные треки.</p>
         </div>
 
-        <!-- Вкладка: Профиль -->
-        <div id="tab-profile" class="ppl-tab-content" style="display: none; max-width: 500px; width: 100%; margin: 0 auto; background-color: rgba(24, 24, 27, 0.7); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center; box-sizing: border-box;">
-            <div id="profile-avatar-wrapper" style="width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 20px auto; overflow: hidden; background-color: rgba(255,255,255,0.05); border: 2px solid rgba(45, 212, 191, 0.3); display: flex; align-items: center; justify-content: center;">
-                <img id="profile-avatar-img" src="" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
-                <!-- Добавлен id="profile-logo-fallback", чтобы JS правильно подставлял картинку логотипа -->
-                <img id="profile-logo-fallback" src="" style="width: 50%; height: 50%; object-fit: contain; opacity: 0.8; display: block;" />
+        <!-- ══ Вкладка: Профиль ══ -->
+        <div id="tab-profile" class="ppl-tab-content" style="display:none;max-width:500px;width:100%;margin:0 auto;background:rgba(24,24,27,0.7);padding:40px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);text-align:center;box-sizing:border-box;">
+            <div id="profile-avatar-wrapper" style="width:96px;height:96px;border-radius:50%;margin:0 auto 20px;overflow:hidden;background:rgba(255,255,255,0.05);border:2px solid rgba(45,212,191,0.3);display:flex;align-items:center;justify-content:center;">
+                <img id="profile-avatar-img" src="" style="width:100%;height:100%;object-fit:cover;display:none;" />
+                <img id="profile-logo-fallback" src="" style="width:50%;height:50%;object-fit:contain;opacity:0.8;display:block;" />
             </div>
-            <h2 id="profile-name" style="font-size: 22px; font-weight: 800; color: #ffffff; margin: 0 0 6px 0;">Гость PepeLand</h2>
-            <p id="profile-status" style="font-size: 14px; color: #a1a1aa; margin: 0 0 24px 0;">Синхронизация с сессией сайта</p>
+            <h2 id="profile-name" style="font-size:22px;font-weight:800;color:#fff;margin:0 0 6px;">Гость PepeLand</h2>
+            <p id="profile-status" style="font-size:14px;color:#a1a1aa;margin:0 0 24px;">Синхронизация с сессией сайта</p>
             <div id="profile-actions">
-                <a href="https://pepeland.net/auth" target="_blank" style="display: inline-block; background-color: #14b8a6; color: #09090b; font-weight: 700; padding: 10px 24px; border-radius: 12px; font-size: 14px; text-decoration: none;">Войти на сайт</a>
+                <a href="https://pepeland.net/auth" target="_blank" style="display:inline-block;background:#14b8a6;color:#09090b;font-weight:700;padding:10px 24px;border-radius:12px;font-size:14px;text-decoration:none;">Войти на сайт</a>
             </div>
         </div>
+
+        <!-- ══ Вкладка: Админ-панель ══ -->
+        <div id="tab-admin" class="ppl-tab-content" style="display:none;width:100%;max-width:800px;">
+            <div id="admin-panel">
+                <div style="margin-bottom:24px;">
+                    <h2 style="font-size:20px;font-weight:800;color:#fff;margin:0 0 4px;">⚙ Админ-панель PPL FM</h2>
+                    <p style="font-size:13px;color:#71717a;margin:0;">Управление эфиром, подкастами и настройками</p>
+                </div>
+
+                <!-- Flash -->
+                <div id="admin-flash" style="display:none;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;margin-bottom:20px;"></div>
+
+                <!-- Вкладки внутри панели -->
+                <div style="display:flex;gap:8px;margin-bottom:24px;background:rgba(255,255,255,0.04);border-radius:14px;padding:6px;">
+                    <button class="admin-tab-btn" data-admin-tab="stream"   style="flex:1;padding:8px 0;border-radius:10px;border:none;cursor:pointer;font-size:13px;font-weight:600;background:#14b8a6;color:#09090b;transition:all .15s;">🎙 Эфир</button>
+                    <button class="admin-tab-btn" data-admin-tab="podcasts" style="flex:1;padding:8px 0;border-radius:10px;border:none;cursor:pointer;font-size:13px;font-weight:600;background:transparent;color:#a1a1aa;transition:all .15s;">🎧 Подкасты</button>
+                    <button class="admin-tab-btn" data-admin-tab="stats"    style="flex:1;padding:8px 0;border-radius:10px;border:none;cursor:pointer;font-size:13px;font-weight:600;background:transparent;color:#a1a1aa;transition:all .15s;">📊 Статистика</button>
+                </div>
+
+                <!-- ── Эфир ── -->
+                <div id="admin-tab-stream" class="admin-tab-content" style="display:none;">
+                    <div style="display:flex;flex-direction:column;gap:16px;">
+                        <div>
+                            <label style="font-size:12px;color:#a1a1aa;font-weight:600;display:block;margin-bottom:5px;">URL потока *</label>
+                            <input id="admin-stream-url" type="url" placeholder="https://stream.example.com/live"
+                                style="width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 14px;color:#fff;font-size:14px;box-sizing:border-box;outline:none;" />
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                            <div>
+                                <label style="font-size:12px;color:#a1a1aa;font-weight:600;display:block;margin-bottom:5px;">Частота FM</label>
+                                <input id="admin-stream-freq" type="text" placeholder="104.7 FM"
+                                    style="width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 14px;color:#fff;font-size:14px;box-sizing:border-box;outline:none;" />
+                            </div>
+                            <div>
+                                <label style="font-size:12px;color:#a1a1aa;font-weight:600;display:block;margin-bottom:5px;">Битрейт</label>
+                                <input id="admin-stream-bitrate" type="text" placeholder="128 kbps"
+                                    style="width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 14px;color:#fff;font-size:14px;box-sizing:border-box;outline:none;" />
+                            </div>
+                        </div>
+                        <div>
+                            <label style="font-size:12px;color:#a1a1aa;font-weight:600;display:block;margin-bottom:5px;">Формат</label>
+                            <input id="admin-stream-format" type="text" placeholder="Stereo / Live"
+                                style="width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 14px;color:#fff;font-size:14px;box-sizing:border-box;outline:none;" />
+                        </div>
+                        <div style="display:flex;align-items:center;gap:14px;">
+                            <span style="font-size:12px;color:#a1a1aa;font-weight:600;">Статус эфира:</span>
+                            <button id="admin-stream-online" data-online="1"
+                                style="padding:7px 20px;border-radius:10px;border:none;cursor:pointer;font-size:13px;font-weight:700;background:rgba(20,184,166,0.15);color:#2dd4bf;transition:all .2s;">
+                                🟢 Онлайн
+                            </button>
+                        </div>
+                        <button id="admin-save-stream"
+                            style="padding:12px 0;border-radius:12px;border:none;cursor:pointer;font-size:14px;font-weight:700;background:#14b8a6;color:#09090b;width:100%;margin-top:4px;">
+                            Сохранить настройки эфира
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Подкасты ── -->
+                <div id="admin-tab-podcasts" class="admin-tab-content" style="display:none;">
+                    <div style="background:rgba(0,0,0,0.25);border-radius:16px;padding:20px;border:1px solid rgba(255,255,255,0.07);margin-bottom:20px;">
+                        <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 14px;">Добавить подкаст</h3>
+                        <div style="display:flex;flex-direction:column;gap:12px;">
+                            <div>
+                                <label style="font-size:12px;color:#a1a1aa;font-weight:600;display:block;margin-bottom:5px;">Название *</label>
+                                <input id="admin-pod-title" type="text" placeholder="Выпуск #3: ..."
+                                    style="width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 14px;color:#fff;font-size:14px;box-sizing:border-box;outline:none;" />
+                            </div>
+                            <div>
+                                <label style="font-size:12px;color:#a1a1aa;font-weight:600;display:block;margin-bottom:5px;">Описание</label>
+                                <textarea id="admin-pod-desc" placeholder="Краткое описание выпуска..."
+                                    style="width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 14px;color:#fff;font-size:14px;box-sizing:border-box;outline:none;resize:vertical;min-height:64px;font-family:inherit;"></textarea>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                                <div>
+                                    <label style="font-size:12px;color:#a1a1aa;font-weight:600;display:block;margin-bottom:5px;">URL аудио</label>
+                                    <input id="admin-pod-url" type="url" placeholder="https://..."
+                                        style="width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 14px;color:#fff;font-size:14px;box-sizing:border-box;outline:none;" />
+                                </div>
+                                <div>
+                                    <label style="font-size:12px;color:#a1a1aa;font-weight:600;display:block;margin-bottom:5px;">Дата</label>
+                                    <input id="admin-pod-date" type="date"
+                                        style="width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 14px;color:#fff;font-size:14px;box-sizing:border-box;outline:none;" />
+                                </div>
+                            </div>
+                            <button id="admin-add-pod"
+                                style="padding:10px 0;border-radius:11px;border:none;cursor:pointer;font-size:14px;font-weight:700;background:#14b8a6;color:#09090b;width:100%;">
+                                + Добавить выпуск
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 12px;">Список выпусков</h3>
+                    <div id="admin-pod-list"></div>
+                </div>
+
+                <!-- ── Статистика ── -->
+                <div id="admin-tab-stats" class="admin-tab-content" style="display:none;">
+                    <div id="admin-stats" style="margin-bottom:24px;"></div>
+                    <button id="admin-reset"
+                        style="padding:10px 24px;border-radius:11px;border:none;cursor:pointer;font-size:13px;font-weight:600;background:rgba(239,68,68,0.12);color:#f87171;">
+                        ⚠ Сбросить все настройки
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </div>
 
 <style>
     @keyframes pulse-bar {
-        0% { height: 8px; }
+        0%   { height: 8px; }
         100% { height: 32px; }
     }
-    #equalizer.opacity-40 div { animation: none !important; height: 12px; }
-    #equalizer div:nth-child(1) { animation: pulse-bar 0.8s infinite alternate 0.1s; }
-    #equalizer div:nth-child(2) { animation: pulse-bar 0.8s infinite alternate 0.3s; }
-    #equalizer div:nth-child(3) { animation: pulse-bar 0.8s infinite alternate 0.2s; }
-    #equalizer div:nth-child(4) { animation: pulse-bar 0.8s infinite alternate 0.4s; }
+    #equalizer div:nth-child(1) { animation: pulse-bar 0.8s infinite alternate 0.10s; }
+    #equalizer div:nth-child(2) { animation: pulse-bar 0.8s infinite alternate 0.30s; }
+    #equalizer div:nth-child(3) { animation: pulse-bar 0.8s infinite alternate 0.20s; }
+    #equalizer div:nth-child(4) { animation: pulse-bar 0.8s infinite alternate 0.40s; }
     #equalizer div:nth-child(5) { animation: pulse-bar 0.8s infinite alternate 0.15s; }
+    #equalizer { animation: none; }
+    #equalizer div { height: 12px; }
 </style>

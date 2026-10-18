@@ -1,8 +1,11 @@
 {
   "manifest_version": 3,
   "name": "PPL FM Tab for PepeLand",
-  "version": "1.3",
+  "version": "1.4",
   "description": "Медиацентр PPL FM для PepeLand с локальной загрузкой интерфейса",
+  "permissions": [
+    "storage"
+  ],
   "host_permissions": [
     "https://*.pepeland.net/*"
   ],
@@ -20,4 +23,3 @@
     }
   ]
 }
-```[cite: 1]
