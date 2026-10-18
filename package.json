@@ -1,0 +1,13 @@
+{
+  "name": "ppl-fm-tab-for-pepeland",
+  "version": "1.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Медиацентр PPL FM для PepeLand с локальной загрузкой интерфейса",
+  "scripts": {
+    "test": "node --test tests/extension.test.js"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  }
+}

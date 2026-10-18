@@ -18,6 +18,15 @@
         }
     };
 
+    // ─── Утилиты ───────────────────────────────────────────────────────────────
+    function escapeHtml(str) {
+        return String(str).split('&').join('&amp;').split('<').join('&lt;').split('>').join('&gt;').split('"').join('&quot;').split("'").join('&#39;');
+    }
+
+    const EXT_VERSION = (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getManifest)
+        ? chrome.runtime.getManifest().version
+        : '1.4';
+
     // ─── Профиль пользователя с сайта ────────────────────────────────────────
     function getPepeLandUserProfile() {
         const userAvatarImg = document.querySelector('header img, nav img');
@@ -187,18 +196,23 @@
             volSlider.value = savedVol;
             if (audio) audio.volume = savedVol / 100;
             if (volLabel) volLabel.textContent = savedVol + '%';
+            let volSaveTimer = null;
             volSlider.oninput = () => {
                 const v = parseInt(volSlider.value);
                 if (audio) audio.volume = v / 100;
                 if (volLabel) volLabel.textContent = v + '%';
-                Store.set('ppl_volume', v);
+                clearTimeout(volSaveTimer);
+                volSaveTimer = setTimeout(() => Store.set('ppl_volume', v), 300);
             };
         }
 
-        // Обновляем src аудио из настроек
+        // Обновляем src аудио из настроек + обработка ошибок потока
         if (audio) {
             const src = el.querySelector('#audioStream source');
             if (src) src.src = streamCfg.url;
+            audio.addEventListener('error', () => {
+                if (statusText) statusText.textContent = 'Ошибка загрузки потока';
+            });
         }
 
         if (playBtn && !playBtn.dataset.init) {
@@ -217,7 +231,6 @@
                     return;
                 }
                 if (!isPlaying) {
-                    audio.load();
                     audio.play()
                         .then(() => { isPlaying = true; updateState(); if (statusText) statusText.textContent = 'Эфир воспроизводится'; })
                         .catch(() => { isPlaying = true; updateState(); if (statusText) statusText.textContent = 'Эфир воспроизводится (Демо)'; });
@@ -281,12 +294,12 @@
         container.innerHTML = news.map(item => `
             <div style="padding:20px;border-radius:16px;background:rgba(24,24,27,0.7);border:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:8px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#71717a;font-family:monospace;">
-                    <span>${item.date}</span>
+                    <span>${escapeHtml(item.date)}</span>
                     <span style="background:rgba(20,184,166,0.1);color:#2dd4bf;padding:2px 8px;border-radius:4px;border:1px solid rgba(20,184,166,0.2);">Подкаст</span>
                 </div>
-                <h3 style="font-weight:700;font-size:18px;color:#fff;margin:0;">${item.title}</h3>
-                <p style="font-size:14px;color:#a1a1aa;margin:0;">${item.description}</p>
-                <a href="${item.audioUrl}" target="_blank" style="margin-top:8px;display:inline-flex;align-items:center;gap:8px;color:#2dd4bf;text-decoration:none;font-size:14px;font-weight:600;">▶ Слушать выпуск</a>
+                <h3 style="font-weight:700;font-size:18px;color:#fff;margin:0;">${escapeHtml(item.title)}</h3>
+                <p style="font-size:14px;color:#a1a1aa;margin:0;">${escapeHtml(item.description)}</p>
+                <a href="${escapeHtml(item.audioUrl)}" target="_blank" style="margin-top:8px;display:inline-flex;align-items:center;gap:8px;color:#2dd4bf;text-decoration:none;font-size:14px;font-weight:600;">▶ Слушать выпуск</a>
             </div>
         `).join('');
     }
@@ -410,8 +423,8 @@
             podList.innerHTML = news.map((item, i) => `
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);margin-bottom:8px;">
                     <div>
-                        <div style="font-size:14px;font-weight:700;color:#fff;">${item.title}</div>
-                        <div style="font-size:12px;color:#71717a;font-family:monospace;margin-top:2px;">${item.date}</div>
+                        <div style="font-size:14px;font-weight:700;color:#fff;">${escapeHtml(item.title)}</div>
+                        <div style="font-size:12px;color:#71717a;font-family:monospace;margin-top:2px;">${escapeHtml(item.date)}</div>
                     </div>
                     <button data-idx="${i}" class="admin-del-pod" style="padding:5px 12px;border-radius:8px;border:none;cursor:pointer;font-size:12px;background:rgba(239,68,68,0.12);color:#f87171;">Удалить</button>
                 </div>
@@ -456,7 +469,7 @@
                     ['Подкастов в ленте', news.length],
                     ['Громкость', vol + '%'],
                     ['Статус эфира', streamCfg.online ? '🟢 Онлайн' : '🔴 Офлайн'],
-                    ['Версия расширения', '1.3'],
+                    ['Версия расширения', EXT_VERSION],
                 ].map(([label, val]) => `
                     <div style="padding:16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);">
                         <div style="font-size:12px;color:#71717a;margin-bottom:6px;">${label}</div>
