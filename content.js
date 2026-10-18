@@ -63,10 +63,10 @@
         const tab = document.createElement('a');
         tab.id = 'ppl-fm-tab';
         tab.className = wikiLink.className || 'group flex h-full items-center px-1.5 cursor-pointer';
-        tab.href = '#ppl-fm';
+        tab.href = '/ppl-fm';
         tab.innerHTML = `<div class="flex rounded-lg transition group-hover:bg-white/10 px-2.5 py-2 text-sm font-medium text-zinc-300 hover:text-white">PPL FM</div>`;
         wikiLink.insertAdjacentElement('afterend', tab);
-        tab.addEventListener('click', e => { e.preventDefault(); window.location.hash = 'ppl-fm'; checkRoute(); });
+        tab.addEventListener('click', e => { e.preventDefault(); window.history.pushState({}, '', '/ppl-fm'); checkRoute(); });
     }
 
     function updateHeaderTabs() {
@@ -74,7 +74,7 @@
         if (!tab) return;
         const inner = tab.querySelector('div');
         if (!inner) return;
-        if (window.location.hash === '#ppl-fm') {
+        if (window.location.pathname === '/ppl-fm') {
             inner.classList.remove('text-zinc-300', 'text-white');
             inner.classList.add('text-teal-400');
             document.querySelectorAll('header a').forEach(link => {
@@ -129,7 +129,7 @@
     }
 
     function checkRoute() {
-        if (window.location.hash === '#ppl-fm') showPlayer(); else hidePlayer();
+        if (window.location.pathname === '/ppl-fm') showPlayer(); else hidePlayer();
         updateHeaderTabs();
     }
 
@@ -489,7 +489,6 @@
     }
 
     // ─── Роутинг ──────────────────────────────────────────────────────────────
-    window.addEventListener('hashchange', checkRoute);
     window.addEventListener('popstate', checkRoute);
     document.addEventListener('click', () => setTimeout(checkRoute, 100));
 

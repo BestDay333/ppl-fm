@@ -102,9 +102,9 @@ async function waitFor(fn, timeout = 3000) {
     throw new Error('waitFor timed out');
 }
 
-async function loadPlayer({ hash = '#ppl-fm', loggedIn = false } = {}) {
+async function loadPlayer({ path = '/ppl-fm', loggedIn = false } = {}) {
     renderHeader({ loggedIn });
-    window.location.hash = hash;
+    window.history.pushState({}, '', path);
     loadContentScript();
     return waitFor(() => document.getElementById('ppl-fm-player-root'));
 }
@@ -128,16 +128,16 @@ describe('Вкладка PPL FM в шапке', () => {
 describe('Роутинг', () => {
     beforeEach(() => setupDOM());
 
-    test('показывает плеер по хешу #ppl-fm и скрывает контент', async () => {
+    test('показывает плеер по пути /ppl-fm и скрывает контент', async () => {
         const playerRoot = await loadPlayer();
         assert.ok(playerRoot, 'Плеер загружен');
         assert.equal(document.getElementById('other-content').style.display, 'none');
         assert.ok(document.getElementById('playBtn'));
     });
 
-    test('скрывает плеер без хеша', async () => {
+    test('скрывает плеер на других страницах', async () => {
         renderHeader();
-        window.location.hash = '';
+        window.history.pushState({}, '', '/');
         loadContentScript();
         await wait(350);
         assert.equal(document.getElementById('ppl-fm-player-root'), null);
