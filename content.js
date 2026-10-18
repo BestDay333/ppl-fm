@@ -78,9 +78,12 @@
             inner.classList.remove('text-zinc-300', 'text-white');
             inner.classList.add('text-teal-400');
             document.querySelectorAll('header a').forEach(link => {
-                if (link !== tab) link.querySelectorAll('*').forEach(el => {
-                    el.classList.remove('text-teal-400', 'text-emerald-400');
-                });
+                if (link !== tab) {
+                    link.classList.remove('text-teal-400', 'text-emerald-400');
+                    link.querySelectorAll('*').forEach(el => {
+                        el.classList.remove('text-teal-400', 'text-emerald-400');
+                    });
+                }
             });
         } else {
             inner.classList.remove('text-teal-400');
