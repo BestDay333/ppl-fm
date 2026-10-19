@@ -69,6 +69,21 @@
         tab.addEventListener('click', e => { e.preventDefault(); window.history.pushState({}, '', '/ppl-fm'); checkRoute(); });
     }
 
+    // Снимает подсветку активной вкладки сайта (teal/emerald/зелёные классы, inline-цвет)
+    function stripActiveHighlight(el) {
+        [...el.classList].forEach(cls => {
+            if (/teal|emerald|green|cyan|active|current|selected/i.test(cls)) el.classList.remove(cls);
+        });
+        if (el.style && el.style.color) el.style.color = '';
+    }
+
+    function isGreenish(color) {
+        const m = /rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/.exec(color || '');
+        if (!m) return false;
+        const r = +m[1], g = +m[2], b = +m[3];
+        return g > r + 20 && g > b + 20;
+    }
+
     function updateHeaderTabs() {
         const tab = document.getElementById('ppl-fm-tab');
         if (!tab) return;
@@ -78,16 +93,23 @@
             inner.classList.remove('text-zinc-300', 'text-white');
             inner.classList.add('text-teal-400');
             document.querySelectorAll('header a').forEach(link => {
-                if (link !== tab) {
-                    link.classList.remove('text-teal-400', 'text-emerald-400');
-                    link.querySelectorAll('*').forEach(el => {
-                        el.classList.remove('text-teal-400', 'text-emerald-400');
-                    });
-                }
+                if (link === tab) return;
+                stripActiveHighlight(link);
+                link.querySelectorAll('*').forEach(stripActiveHighlight);
+                // Фолбэк: если сайт красит вкладку через CSS, гасим зелёный цвет принудительно
+                try {
+                    if (window.getComputedStyle && isGreenish(window.getComputedStyle(link).color)) {
+                        link.style.color = '#d4d4d8';
+                    }
+                } catch (_) { /* ignore */ }
             });
         } else {
             inner.classList.remove('text-teal-400');
             inner.classList.add('text-zinc-300');
+            // Возвращаем исходное поведение: убираем принудительный цвет, если мы его ставили
+            document.querySelectorAll('header a').forEach(link => {
+                if (link !== tab && link.style.color === 'rgb(212, 212, 216)') link.style.color = '';
+            });
         }
     }
 

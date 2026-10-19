@@ -142,6 +142,26 @@ describe('Роутинг', () => {
         await wait(350);
         assert.equal(document.getElementById('ppl-fm-player-root'), null);
     });
+
+    test('снимает подсветку с других вкладок при активной PPL FM', async () => {
+        document.body.innerHTML = `
+            <header>
+                <a href="/">Главная</a>
+                <a href="/about" class="text-teal-400 active">О сервере</a>
+                <a href="/rules">Правила</a>
+                <a href="/wiki">Вики</a>
+            </header>
+            <main><div id="other-content">Контент сайта</div></main>
+        `;
+        window.history.pushState({}, '', '/ppl-fm');
+        loadContentScript();
+        await waitFor(() => document.getElementById('ppl-fm-player-root'));
+        const active = [...document.querySelectorAll('header a')].find(a => a.textContent.trim() === 'О сервере');
+        assert.equal(active.classList.contains('text-teal-400'), false, 'teal-класс снят');
+        assert.equal(active.classList.contains('active'), false, 'active-класс снят');
+        const pplTab = document.getElementById('ppl-fm-tab');
+        assert.ok(pplTab.querySelector('div').classList.contains('text-teal-400'), 'PPL FM подсвечена');
+    });
 });
 
 describe('Прямой эфир', () => {
